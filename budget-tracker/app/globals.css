@@ -1,0 +1,570 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@400;700&display=swap');
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* To prevent horizontal scrolling */
+  height: 100%; /* Ensure body stretches full height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lexend-giga {
+  font-family: "Lexend Giga", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Change to 700 for bold */
+  font-style: normal;
+}
+
+.button {
+  color: white;
+  background:#3b82f6;
+  transition: opacity 230ms;
+}
+
+input {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  width: 250px;
+  margin: 10px 10px;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 10px;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+@media (max-width:1000px) {
+  .goal-card {
+    width: 30%;
+    min-width: 400px;
+  }
+}
+
+@media (min-width:1000px) {
+  .goal-card {
+    width: 30%;
+    min-width: 1000px;
+  }
+}
+
+/* Form container */
+.form-container {
+  background-color: rgba(255, 255, 255, 0);
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center text inside the form */
+  width: 100%;
+  max-width: 1000px; /* Make sure form doesn't get too wide */
+  margin: 0 auto; /* Ensure container is centered on page */
+}
+
+/* Title styling */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Description text styling */
+.description {
+  margin-bottom: 24px;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* Form styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align form elements to the center */
+  gap: 16px;
+}
+
+/* Input field styling */
+.input-field {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 80%; /* Set input width to a smaller percentage to avoid stretching */
+  max-width: 400px; /* Limit max width for better appearance */
+}
+
+/* Submit button styling */
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 80%; /* Align button with input field */
+  max-width: 400px; /* Limit max width for consistency */
+}
+
+/* Submit button hover effect */
+.submit-btn:hover {
+  background-color: #7dbcff;
+}
+
+.add-goal-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #01c7c0;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: width 0.3s ease, border-radius 0.3s ease;
+  overflow: hidden;
+}
+
+.add-goal-btn .add-goal-icon {
+  font-size: 24px;
+  transition: opacity 0.3s ease;
+}
+
+.add-goal-btn .add-goal-text {
+  opacity: 0;
+  position: absolute;
+  left: 50px; 
+  transition: opacity 0.3s ease;
+}
+
+.add-goal-btn:hover {
+  width: 200px;
+  border-radius: 25px 50px 50px 25px;
+  background-color: #01c7c0;
+}
+
+.add-goal-btn:hover .add-goal-text {
+  opacity: 1; /* Show the text when hovered */
+}
+
+.add-goal-btn:hover .add-goal-icon {
+  opacity: 0; /* Fade out the plus sign when hovered */
+}
+
+/* popup overlay edit menu */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  position: relative;
+}
+
+/* x button in budgeting*/
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  background: none;
+  background-clip: padding-box;
+  cursor: pointer;
+}
+
+.close-popup:hover {
+  color: #FF0050;
+  background-color: transparent;
+}
+
+/* Goals List */
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.goal-card {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 10px #000000 inset;
+  padding: 40px;
+  border-radius: 8px;
+  background-color: #844d4d00;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.goal-card:hover {
+  background-color: #00000042;
+}
+
+.goal-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.edit-icon:hover {
+  transform: scale(1.2); /* Slightly enlarge the icon on hover */
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  height: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  background-color: #4CAF50;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.dollar-button {
+  background-color: #4CAF50;
+  color: rgb(0, 0, 0);
+  padding: 15px;
+  border-radius: 5%;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 65px;
+  height: 5px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Edit Spent Form */
+.edit-spent-form {
+  margin-top: 10px;
+}
+
+.edit-spent-form input {
+  padding: 8px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.edit-spent-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-spent-form button:hover {
+  background-color: #45a049;
+}
+
+/* outlook page */
+
+.outlook-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.spending-habits-chart {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 8px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.692);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.advisor-response {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+/* ANALYTICS PAGE */
+
+.analytics-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: rgba(232, 16, 16, 0);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.685);
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.over-budget-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.over-budget-card li {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.over-budget-card strong {
+  font-weight: bold;
+}
+
+/* NAVBAR CUSTOMIZATION */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #171717;
+  z-index: 10;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.navbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 5px;
+}
+
+.navbar-item .icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FF0050;
+  transition: color 0.3s ease;
+}
+
+.navbar-item .icon :hover {
+  color: #fff; /* Change color on hover */
+}
+
+.navbar-item.active {
+  background-color: #01c7c0;
+  padding: 8px 16px;
+  border-radius: 12px;
+}
+
+.navbar-item.active .icon {
+  color: #FF0050;
+  transition: color 0.3s ease;
+}
+
+.navbar-item .text {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  color: white;
+}
+
+.streak-display {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background-color: #01c7c0;
+  border-radius: 12px;
+  padding: 8px 16px;
+  position: absolute;
+  left: 20px;
+}
+
+.fire-icon {
+  color: #FF0050;
+  font-size: 1.3rem;
+}
+
+/* DARK MODE */
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background: #171717;
+    color: #ffffff;
+  }
+  input {
+    border-color: #555;
+    background-color: #333;
+    color: #fff;
+  }
+  button {
+    background-color: #01c7c0;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #00948f;
+  }
+}

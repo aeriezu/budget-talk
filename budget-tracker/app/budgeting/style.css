@@ -1,0 +1,55 @@
+.card {
+    background-color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: #3b82f6;
+    border-radius: 4px;
+  }
+  
+  .category-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .progress-text {
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .form-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 250px;
+  }
+  
+  .form-button {
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .form-button:hover {
+    background-color: #2563eb;
+  }
+  
